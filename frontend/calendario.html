@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGJ369 Agenda - Calendario</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📅 Calendario</h1>
+            <nav>
+                <a href="index.html">Tareas</a>
+                <a href="calendario.html" class="active">Calendario</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="calendar-section">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="nav-btn">◀</button>
+                    <h2 id="currentMonth">Enero 2026</h2>
+                    <button id="nextMonth" class="nav-btn">▶</button>
+                </div>
+
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Dom</div>
+                    <div class="calendar-day-header">Lun</div>
+                    <div class="calendar-day-header">Mar</div>
+                    <div class="calendar-day-header">Mié</div>
+                    <div class="calendar-day-header">Jue</div>
+                    <div class="calendar-day-header">Vie</div>
+                    <div class="calendar-day-header">Sáb</div>
+
+                    <div id="calendarDays" class="calendar-days">
+                        <!-- Los días se generarán dinámicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="day-tasks-section">
+                <h3 id="selectedDate">Selecciona un día</h3>
+                <div id="dayTasks" class="day-tasks-list">
+                    <!-- Las tareas del día seleccionado se mostrarán aquí -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/calendario.js"></script>
+</body>
+
+</html>
