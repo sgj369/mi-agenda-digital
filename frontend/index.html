@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGJ369 Agenda - Tablero de Tareas</title>
-    <link rel="stylesheet" href="assets/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a3aff">
+    <link rel="apple-touch-icon" href="assets/icon.svg">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
-        <header>
-            <h1>📋 Mi Agenda Personal</h1>
+        <header class="glass-panel">
+            <h1>
+                <svg class="logo-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Mi Agenda Digital
+            </h1>
             <nav>
-                <a href="index.html" class="active">Tareas</a>
-                <a href="calendario.html">Calendario</a>
+                <a href="index.html" class="active">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                    </svg>
+                    Tareas
+                </a>
+                <a href="calendario.html">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                    </svg>
+                    Calendario
+                </a>
             </nav>
         </header>
 
         <main>
-            <section class="add-task-section">
-                <h2>Nueva Tarea</h2>
+            <section class="add-task-section glass-panel">
+                <h2>
+                    <svg class="section-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Nueva Tarea
+                </h2>
                 <form id="taskForm">
                     <div class="form-group">
                         <input type="text" id="titulo" placeholder="Título de la tarea" required>
@@ -30,9 +58,9 @@
                     <div class="form-row">
                         <div class="form-group">
                             <select id="prioridad">
-                                <option value="baja">🟢 Baja</option>
-                                <option value="media" selected>🟡 Media</option>
-                                <option value="alta">🔴 Alta</option>
+                                <option value="baja">Baja</option>
+                                <option value="media" selected>Media</option>
+                                <option value="alta">Alta</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -42,13 +70,25 @@
                             <input type="datetime-local" id="fecha">
                         </div>
                     </div>
-                    <button type="submit" class="btn-primary">Agregar Tarea</button>
+                    <button type="submit" class="btn-primary">
+                        <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Guardar Tarea
+                    </button>
                 </form>
             </section>
 
-            <section class="tasks-section">
+            <section class="tasks-section glass-panel">
                 <div class="section-header">
-                    <h2>Mis Tareas</h2>
+                    <h2>
+                        <svg class="section-icon" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                        </svg>
+                        Mis Tareas
+                    </h2>
                     <div class="filters">
                         <button class="filter-btn active" data-filter="todas">Todas</button>
                         <button class="filter-btn" data-filter="pendientes">Pendientes</button>
@@ -62,6 +102,7 @@
         </main>
     </div>
 
-    <script src="assets/app.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
+
 </html>

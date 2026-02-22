@@ -134,23 +134,29 @@ function mostrarTareasDia(date) {
     });
 
     if (tareasDia.length === 0) {
-        dayTasksEl.innerHTML = '<p style="color: var(--text-muted); text-align: center;">No hay tareas para este día.</p>';
+        dayTasksEl.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 1.5rem;">No hay tareas para este día.</p>';
         return;
     }
+
+    const priorityIcons = {
+        alta: '<svg style="width: 14px; height: 14px;" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>',
+        media: '<svg style="width: 14px; height: 14px;" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" /></svg>',
+        baja: '<svg style="width: 14px; height: 14px;" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>'
+    };
 
     dayTasksEl.innerHTML = tareasDia.map(tarea => `
         <div class="task-card ${tarea.completada ? 'completada' : ''}" style="margin-bottom: 0.75rem;">
             <div class="task-header">
                 <h3 class="task-title">${tarea.titulo}</h3>
                 <span class="task-priority ${tarea.prioridad}">
-                    ${tarea.prioridad === 'alta' ? '🔴' : tarea.prioridad === 'media' ? '🟡' : '🟢'} 
-                    ${tarea.prioridad.charAt(0).toUpperCase() + tarea.prioridad.slice(1)}
+                    ${priorityIcons[tarea.prioridad]}
+                    ${tarea.prioridad}
                 </span>
             </div>
             ${tarea.descripcion ? `<p class="task-description">${tarea.descripcion}</p>` : ''}
             <div class="task-meta">
-                ${tarea.categoria ? `<span>📁 ${tarea.categoria}</span>` : ''}
-                <span>🕐 ${formatearHora(tarea.fecha)}</span>
+                ${tarea.categoria ? `<span><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg> ${tarea.categoria}</span>` : ''}
+                <span><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> ${formatearHora(tarea.fecha)}</span>
             </div>
         </div>
     `).join('');
@@ -162,5 +168,14 @@ function formatearHora(fecha) {
     return date.toLocaleTimeString('es-ES', {
         hour: '2-digit',
         minute: '2-digit'
+    });
+}
+
+// Registrar Service Worker para PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registrado con éxito', reg))
+            .catch(err => console.warn('Error al registrar Service Worker', err));
     });
 }

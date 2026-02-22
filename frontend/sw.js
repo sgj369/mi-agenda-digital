@@ -1,0 +1,33 @@
+const CACHE_NAME = 'agenda-v1';
+const urlsToCache = [
+    './',
+    './index.html',
+    './calendario.html',
+    './assets/css/styles.css',
+    './assets/js/app.js',
+    './assets/js/calendario.js',
+    './manifest.json',
+    './assets/icon.svg'
+];
+
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                return cache.addAll(urlsToCache);
+            })
+    );
+});
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                // Cache hit - return response
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            })
+    );
+});

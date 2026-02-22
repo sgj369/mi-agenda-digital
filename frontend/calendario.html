@@ -5,26 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGJ369 Agenda - Calendario</title>
-    <link rel="stylesheet" href="assets/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a3aff">
+    <link rel="apple-touch-icon" href="assets/icon.svg">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <h1>📅 Calendario</h1>
+        <header class="glass-panel">
+            <h1>
+                <svg class="logo-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Mi Agenda Digital
+            </h1>
             <nav>
-                <a href="index.html">Tareas</a>
-                <a href="calendario.html" class="active">Calendario</a>
+                <a href="index.html">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                    </svg>
+                    Tareas
+                </a>
+                <a href="calendario.html" class="active">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                    </svg>
+                    Calendario
+                </a>
             </nav>
         </header>
 
         <main>
-            <section class="calendar-section">
+            <section class="calendar-section glass-panel">
                 <div class="calendar-header">
-                    <button id="prevMonth" class="nav-btn">◀</button>
+                    <button id="prevMonth" class="nav-btn" title="Mes Anterior">
+                        <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
                     <h2 id="currentMonth">Enero 2026</h2>
-                    <button id="nextMonth" class="nav-btn">▶</button>
+                    <button id="nextMonth" class="nav-btn" title="Mes Siguiente">
+                        <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="calendar-grid">
@@ -42,7 +71,7 @@
                 </div>
             </section>
 
-            <section class="day-tasks-section">
+            <section class="day-tasks-section glass-panel">
                 <h3 id="selectedDate">Selecciona un día</h3>
                 <div id="dayTasks" class="day-tasks-list">
                     <!-- Las tareas del día seleccionado se mostrarán aquí -->
@@ -51,7 +80,7 @@
         </main>
     </div>
 
-    <script src="assets/calendario.js"></script>
+    <script src="assets/js/calendario.js"></script>
 </body>
 
 </html>
